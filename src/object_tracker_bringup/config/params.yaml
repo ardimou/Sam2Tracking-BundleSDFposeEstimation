@@ -1,0 +1,153 @@
+rgbd_adapter_node:
+  ros__parameters:
+    rgb_topic: /camera/rgb/image_raw
+    depth_topic: /camera/depth_registered/image_raw
+    info_topic: /camera/rgb/camera_info
+    sync_slop_sec: 0.015
+    max_rgb_depth_delta_sec: 0.015
+    max_valid_depth_m: 5.0
+    min_alignment_valid_ratio: 0.10
+    depth_unit_scale: 0.0
+
+grounding_node:
+  ros__parameters:
+    backend: grounding_dino
+    lazy_load_backend: true
+    initial_query: "package"
+    model_id: IDEA-Research/grounding-dino-tiny
+    device: cuda
+    box_threshold: 0.30
+    text_threshold: 0.30
+    max_alternative_candidates: 3
+    max_instances: 10
+    publish_annotated_image: true
+
+segmentation_node:
+  ros__parameters:
+    backend: sam2
+    lazy_load_backend: true
+    model_id: facebook/sam2.1-hiera-tiny
+    device: auto
+    propagation_mode: video_memory
+    propagation_rate_hz: 5.0
+    confidence_tracking_threshold: 0.75
+    confidence_uncertain_threshold: 0.50
+    max_centroid_jump_frac: 0.25
+    num_interior_points: 2
+    frame_cache_size: 180
+    offload_video_to_cpu: true
+    offload_state_to_cpu: false
+    retained_raw_frames: 2
+    sam2_show_progress: false
+    sam2_fill_hole_area: 0
+    publish_annotated_image: true
+    mask_overlay_alpha: 0.45
+
+bundlesdf_tracking_node:
+  ros__parameters:
+    backend: inprocess
+    bundlesdf_repo_path: /opt/BundleSDF
+    bundlesdf_session_root: /data/sessions
+    neural_reconstruction_enabled: false
+    bundlesdf_debug_level: 0
+    depth_percentile: 100.0
+    depth_zfar_m: 3.0
+    depth_erode_diff_m: 0.01
+    depth_erode_ratio: 1.0
+    depth_edge_normal_threshold_deg: 3.0
+    min_match_with_ref: 5
+    min_match_after_ransac: 5
+    ransac_inlier_dist_m: 0.01
+    feature_correspondence_resize: 320
+    bundle_outer_iterations: 4
+    bundle_inner_iterations: 3
+    ransac_max_iterations: 800
+    ransac_max_translation_neighbor_m: 0.10
+    ransac_max_rotation_neighbor_deg: 45.0
+    bundle_window_size: 2
+    bundle_max_ba_frames: 2
+    max_consecutive_tracking_failures: 5
+    minimum_masked_depth_points: 100
+    minimum_masked_depth_ratio: 0.01
+    maximum_depth_mask_delta_sec: 0.05
+    process_rate_hz: 15.0
+    max_instances: 10
+    frame_cache_size: 300
+    unified_cloud_publish_rate_hz: 2.0
+    maximum_unified_cloud_points: 50000
+    nearby_cloud_pixel_stride: 4
+    object_cloud_pixel_stride: 1
+    nearby_cloud_color_r: 70
+    nearby_cloud_color_g: 110
+    nearby_cloud_color_b: 180
+    object_cloud_color_mode: source_rgb
+    pose_translation_source: sam_xtion
+    translation_mask_minimum_pixels: 25
+    translation_depth_mask_erosion_px: 2
+    translation_minimum_depth_pixels: 10
+    translation_minimum_depth_m: 0.10
+    translation_maximum_depth_m: 3.0
+    instance_status_qos_depth: 32
+    instance_mask_subscription_depth: 10
+
+tracking_supervisor_node:
+  ros__parameters:
+    max_position_jump_m: 0.15
+    max_latency_ms: 200.0
+    uncertain_frames_before_lost: 10
+    instance_subscription_depth: 32
+    use_table_frame: true
+
+table_frame_node:
+  ros__parameters:
+    use_table_frame: true
+    table_frame_id: table_frame
+    camera_frame_id: camera_rgb_optical_frame
+    table_ransac_distance_threshold_m: 0.015
+    table_minimum_inlier_ratio: 0.30
+    table_minimum_inlier_count: 400
+    table_ransac_iterations: 80
+    table_maximum_ransac_points: 5000
+    table_estimation_retry_cooldown_sec: 2.0
+    table_point_stride: 4
+    table_minimum_depth_m: 0.25
+    table_maximum_depth_m: 3.0
+    table_mask_collection_delay_sec: 0.10
+    table_mask_sync_tolerance_sec: 0.08
+    table_estimate_once: true
+    table_expected_up_camera_x: 0.0
+    table_expected_up_camera_y: 0.0
+    table_expected_up_camera_z: -1.0
+    table_minimum_up_alignment: 0.50
+    table_horizontal_reference_x: 1.0
+    table_horizontal_reference_y: 0.0
+    table_horizontal_reference_z: 0.0
+    table_log_pose_matrices: false
+    use_semantic_object_viz_frame: true
+    semantic_object_frame_suffix: _viz
+    semantic_align_z_to_table: true
+    semantic_x_source: project_raw_x
+    publish_raw_object_frame: true
+
+visualization_node:
+  ros__parameters:
+    use_table_frame: true
+    table_frame_id: table_frame
+    semantic_object_frame_suffix: _viz
+    pose_axis_length_m: 0.06
+    pose_axis_shaft_diameter_m: 0.012
+    pose_axis_head_diameter_m: 0.024
+    pose_axis_head_length_m: 0.030
+    pose_axis_label_height_m: 0.018
+    show_reference_wireframe: false
+    show_pose_axes_in_image: false
+    grounding_box_display_sec: 2.0
+    show_global_tracking_overlay: false
+    pose_display_timeout_sec: 0.0
+    show_camera_optical_frame: false
+
+object_tracker_gui:
+  ros__parameters:
+    initial_query: "package"
+    use_table_frame: true
+    debug_metrics_enabled: false

@@ -1,0 +1,83 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Unified tracked objects1
+        - /Object poses1
+    Tree Height: 520
+  - Class: rviz_common/Views
+    Name: Views
+    Expanded:
+      - /Current View1
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Enabled: true
+      Name: Grid
+      Cell Size: 0.1
+      Plane: XY
+      Plane Cell Count: 20
+      Color: 80; 80; 80
+      Alpha: 0.5
+      Value: true
+    - Class: rviz_default_plugins/PointCloud2
+      Enabled: true
+      Name: Colored objects + subdued scene
+      Topic: /object/unified_cloud
+      Queue Size: 2
+      Style: Points
+      Size (Pixels): 2
+      Size (m): 0.005
+      Alpha: 1
+      Position Transformer: XYZ
+      Color Transformer: RGB8
+      Decay Time: 0
+      Selectable: true
+      Use Fixed Frame: true
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: Object poses
+      Topic: /object/viz/markers
+      Queue Size: 10
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 30; 32; 38
+    Fixed Frame: table_frame
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+    - Class: rviz_default_plugins/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Name: Table-frame demo view
+      Target Frame: <Fixed Frame>
+      Distance: 1.0
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0.05
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05
+      Near Clip Distance: 0.01
+      Invert Z Axis: false
+      Pitch: 0.65
+      Yaw: 0.8
+      Value: Orbit (rviz)
+    Saved: ~

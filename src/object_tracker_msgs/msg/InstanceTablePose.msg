@@ -1,0 +1,7 @@
+std_msgs/Header header
+uint32 object_id
+string label
+geometry_msgs/Pose pose
+float32 rotation_from_initial_deg
+float32 vertical_tilt_deg
+float32 initial_vertical_tilt_deg

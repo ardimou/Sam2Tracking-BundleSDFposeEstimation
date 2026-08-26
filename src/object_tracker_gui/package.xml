@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>object_tracker_gui</name>
+  <version>0.1.0</version>
+  <description>Qt operator GUI for object selection and tracker status.</description>
+  <maintainer email="you@example.com">you</maintainer>
+  <license>Apache-2.0</license>
+  <depend>rclpy</depend><depend>sensor_msgs</depend><depend>std_msgs</depend>
+  <depend>std_srvs</depend><depend>cv_bridge</depend>
+  <depend>python_qt_binding</depend><depend>object_tracker_common</depend>
+  <depend>object_tracker_msgs</depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

@@ -1,0 +1,6 @@
+string path
+---
+bool success
+string message
+uint32 num_vertices
+uint32 num_faces

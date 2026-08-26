@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>object_tracker_bringup</name>
+  <version>0.1.0</version>
+  <description>Xtion and BundleSDF pipeline launch and visualization.</description>
+  <maintainer email="you@example.com">you</maintainer>
+  <license>Apache-2.0</license>
+  <depend>rclpy</depend><depend>sensor_msgs</depend><depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>visualization_msgs</depend><depend>geometry_msgs</depend><depend>cv_bridge</depend>
+  <depend>tf2_ros</depend>
+  <depend>ament_index_python</depend>
+  <depend>object_tracker_common</depend><depend>object_tracker_msgs</depend>
+  <depend>object_tracker_perception</depend><depend>object_tracker_tracking</depend>
+  <exec_depend>object_tracker_gui</exec_depend>
+  <exec_depend>openni2_camera</exec_depend>
+  <exec_depend>rclcpp_components</exec_depend>
+  <exec_depend>launch</exec_depend><exec_depend>launch_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

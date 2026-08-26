@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "torch>=2.6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "common"
+version = "0.0.0"
+description = "CUDA extensions for BundleSDF"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.6.0"] 
