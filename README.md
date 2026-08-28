@@ -13,8 +13,8 @@ The release contains only the Xtion + BundleSDF path:
 - SAM-mask/Xtion-depth translation
 - stable table frame, RViz markers, and Qt operator GUI
 
-Depth Anything, PnP, TSDF reconstruction, mock launches, offline replay, and
-recovery experiments are not included.
+**IMPORTANT**: If you want to use the package with a different RGB-D camera than Xtion,
+change the image topics accordingly
 
 > **License note:** the original ROS integration is Apache-2.0, but the
 > vendored BundleSDF component is restricted to non-commercial research or
@@ -30,7 +30,7 @@ recovery experiments are not included.
 - Docker with BuildKit
 - ASUS Xtion / PrimeSense-compatible OpenNI2 camera
 - X11 desktop session for the GUI and RViz
-- approximately 16 GB of GPU memory for the complete pipeline
+- approximately 16 GB of GPU memory for the complete pipeline **tested with Nvidia RTX 4060 16 GB**
 
 The image includes ROS 2 Humble, OpenNI2, RViz, Qt, CUDA Python dependencies,
 GroundingDINO, SAM2, BundleSDF, model checkpoints, and the compiled ROS
